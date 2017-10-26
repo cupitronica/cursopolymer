@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+	<app-drawer>Hello word</app-drawer>
+	<button is="fancy-button" disabled>atractivo botón.</button>
+	<script>
+	class AppDrawer extends HTMLElement {
+	  // A getter/setter for an open property.
+	  get open() {
+	    return this.hasAttribute('open');
+	  }
+	  set open(val) {
+	    // Reflect the value of the open property as an HTML attribute.
+	    (val) ? this.setAttribute('open', '') :  this.removeAttribute('open');
+	    this.toggleDrawer();
+	  }
+	  // A getter/setter for a disabled property.
+	  get disabled() {
+	    return this.hasAttribute('disabled');
+	  }
+	  set disabled(val) {
+	    // Reflect the value of the disabled property as an HTML attribute.
+	    (val) ? this.setAttribute('disabled', '') :  this.removeAttribute('disabled');
+	  }
+	  // Can define constructor arguments if you wish.
+	  constructor() {
+	    // If you define a ctor, always call super() first!
+	    // This is specific to CE and required by the spec.
+	    super();
+	    // Setup a click listener on <app-drawer> itself.
+	    this.addEventListener('click', e => {
+	      // Don't toggle the drawer if it's disabled.
+	      if (this.disabled) { return; }
+	      this.toggleDrawer();
+	    });
+	  }
+	  toggleDrawer() {
+	    console.log('hola');
+	  }
+
+	  connectedCallback(){
+	  	this.innerHTML = 'Hello word 2';
+	  }
+	}
+	customElements.define('app-drawer', AppDrawer);
+
+
+	class FancyDrawer extends AppDrawer {
+	  constructor() {
+	    super(); // always call super() first in the ctor. This also calls the extended class' ctor.
+	  }
+	  toggleDrawer() {
+	    super.toggleDrawer();
+	  }
+	  anotherMethod() {
+
+	  }
+	}
+	customElements.define('fancy-app-drawer', FancyDrawer);
+
+	class FancyButton extends HTMLButtonElement {
+	  constructor() {
+	    super(); // always call super() first in the ctor.
+	    this.addEventListener('click', e => this.drawRipple(e.offsetX, e.offsetY));
+	  }
+	  // Material design ripple animation.
+	  drawRipple(x, y) {  
+	  }
+	}
+	customElements.define('fancy-button', FancyButton, {extends: 'button'});
+	</script>
+</body>
+
+</html>

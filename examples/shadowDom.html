@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+
+  <header>
+  <b>Hola</b>
+  <h1></h1>
+  </header>
+
+  <script>
+  const header = document.querySelector('header');
+  const shadowRoot = header.attachShadow({mode: 'open'});
+  shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1><slot></slot>';
+  </script>
+</body>
+
+</html>

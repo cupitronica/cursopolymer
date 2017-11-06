@@ -1,0 +1,17 @@
+:host{
+  		display: inline-block;
+  		position: relative;
+  	}
+  	p{
+  		text-align: center;
+  		text-transform: uppercase;
+  		margin: 0 auto;
+  		position: absolute;
+  		font-size:45px;
+  	}
+  	#upperText{
+  		top: 10px;
+  	}
+  	#upperText{
+  		bottom: -10px;
+  	}

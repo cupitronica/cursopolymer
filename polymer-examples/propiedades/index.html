@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test con ánimos</title>
+
+  <link rel="import" href="estado-animo.html">
+  
+</head>
+<body>
+  <estado-animo animo="sorprendido" id="displayanimo"></estado-animo>
+
+  <button id="botoncontento">Ponerse contento</button>
+  <button id="botontriste">Ponerse triste</button>
+
+  <script>
+  function ponerContento(){
+    document.getElementById('displayanimo').setAttribute('animo', 'contento');
+  }
+  function ponerTriste(){
+    document.getElementById('displayanimo').setAttribute('animo', 'triste');
+  }
+
+  document.getElementById('botoncontento').addEventListener('click', ponerContento);
+  document.getElementById('botontriste').addEventListener('click', ponerTriste);
+  </script>
+</body>
+</html>
